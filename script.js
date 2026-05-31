@@ -46,6 +46,7 @@ function updateCalculator() {
 
 [usersInput, formsInput, monthsInput].forEach((input) => {
   input.addEventListener("input", updateCalculator);
+  input.addEventListener("change", updateCalculator);
 });
 
 updateCalculator();
