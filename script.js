@@ -1,3 +1,5 @@
+import { estimateFastaFormCost, estimateSubscriptionCost } from "./pricing.js";
+
 const currency = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -5,7 +7,7 @@ const currency = new Intl.NumberFormat("en-US", {
 });
 
 const usersInput = document.querySelector("#users");
-const credentialsInput = document.querySelector("#credentials");
+const formsInput = document.querySelector("#forms");
 const monthsInput = document.querySelector("#months");
 const fastaformCost = document.querySelector("#fastaformCost");
 const rows = document.querySelectorAll(".comparison-table .table-row:not(.table-head)");
@@ -17,20 +19,23 @@ function numericValue(input, fallback) {
 
 function updateCalculator() {
   const users = numericValue(usersInput, 1);
-  const credentials = numericValue(credentialsInput, 1);
+  const forms = numericValue(formsInput, 1);
   const months = numericValue(monthsInput, 12);
-  const fastaformTotal = credentials * 20;
+  const fastaformTotal = estimateFastaFormCost({ users, forms });
 
   fastaformCost.textContent = currency.format(fastaformTotal);
 
   rows.forEach((row) => {
-    const monthlyUserPrice = Number.parseFloat(row.dataset.monthlyUserPrice || "0");
-    const flatMonthlyPrice = Number.parseFloat(row.dataset.flatMonthlyPrice || "0");
-    const minUsers = Number.parseInt(row.dataset.minUsers || "1", 10);
-    const billableUsers = Math.max(users, minUsers);
-    const subscriptionTotal = monthlyUserPrice
-      ? billableUsers * monthlyUserPrice * months
-      : flatMonthlyPrice * months;
+    const subscriptionTotal = estimateSubscriptionCost({
+      users,
+      forms,
+      months,
+      monthlyUserPrice: row.dataset.monthlyUserPrice,
+      flatMonthlyPrice: row.dataset.flatMonthlyPrice,
+      minUsers: row.dataset.minUsers,
+      includedUsers: row.dataset.includedUsers,
+      includedForms: row.dataset.includedForms
+    });
     const difference = subscriptionTotal - fastaformTotal;
 
     row.querySelector("[data-cost]").textContent = currency.format(subscriptionTotal);
@@ -39,7 +44,7 @@ function updateCalculator() {
   });
 }
 
-[usersInput, credentialsInput, monthsInput].forEach((input) => {
+[usersInput, formsInput, monthsInput].forEach((input) => {
   input.addEventListener("input", updateCalculator);
 });
 

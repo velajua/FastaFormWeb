@@ -22,6 +22,7 @@ test("landing page is a GitHub Pages-ready FastaForm marketing page", async () =
   assert.match(html, /SurveyCTO Basic/);
   assert.match(html, /225\/month/);
   assert.match(html, /5,000 monthly submissions/i);
+  assert.doesNotMatch(html, /closest field-data platform comparison/i);
   assert.match(html, /screenshots\/1\.jpeg/);
   assert.match(html, /assets\/web-overview-card\.png/);
   assert.doesNotMatch(html, /assets\/play-feature-graphic\.png/);
@@ -61,4 +62,24 @@ test("web overview card is desktop-resolution", async () => {
   const height = bytes.readUInt32BE(20);
   assert.ok(width >= 1600, `expected width >= 1600, got ${width}`);
   assert.ok(height >= 900, `expected height >= 900, got ${height}`);
+});
+
+test("calculator estimates costs from users and form counts", async () => {
+  const { estimateFastaFormCost, estimateSubscriptionCost } = await import("../pricing.js");
+
+  assert.equal(estimateFastaFormCost({ users: 12, forms: 4 }), 480);
+  assert.equal(estimateFastaFormCost({ users: 2, forms: 7 }), 120);
+
+  assert.equal(
+    estimateSubscriptionCost({ users: 4, forms: 1, months: 12, flatMonthlyPrice: 59, includedUsers: 3 }),
+    1416
+  );
+  assert.equal(
+    estimateSubscriptionCost({ users: 12, forms: 1, months: 12, flatMonthlyPrice: 39, includedUsers: 1 }),
+    5616
+  );
+  assert.equal(
+    estimateSubscriptionCost({ users: 1, forms: 51, months: 12, flatMonthlyPrice: 39, includedUsers: 1, includedForms: 50 }),
+    936
+  );
 });
