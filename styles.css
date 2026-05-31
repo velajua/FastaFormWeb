@@ -239,13 +239,15 @@ dd {
   background: var(--panel);
   border-bottom: 1px solid var(--line);
   border-top: 1px solid var(--line);
-  padding: 26px 24px;
+  padding: 42px 24px;
 }
 
 .feature-graphic img {
   border-radius: 8px;
+  box-shadow: var(--shadow);
   margin: 0 auto;
-  max-width: 1024px;
+  max-width: 1180px;
+  width: min(100%, 1180px);
 }
 
 .section {
@@ -294,7 +296,8 @@ dd {
 
 .steps p,
 .pricing-panel li,
-.source-note {
+.source-note,
+.comparison-context {
   color: var(--muted);
 }
 
@@ -432,6 +435,14 @@ figcaption {
 .source-note {
   font-size: 0.9rem;
   margin-top: 18px;
+}
+
+.comparison-context {
+  background: var(--panel);
+  border-left: 4px solid var(--brand);
+  border-radius: 6px;
+  margin: 18px 0 0;
+  padding: 14px 16px;
 }
 
 .cta {
