@@ -169,8 +169,8 @@
             <input id="users" type="number" min="1" max="500" value="12">
           </label>
           <label>
-            Credential generations
-            <input id="credentials" type="number" min="1" max="500" value="12">
+            Forms needed
+            <input id="forms" type="number" min="1" max="500" value="3">
           </label>
           <label>
             Months to compare
@@ -189,7 +189,7 @@
             <div role="columnheader">Estimated cost</div>
             <div role="columnheader">Difference vs FastaForm</div>
           </div>
-          <div class="table-row" role="row" data-flat-monthly-price="225">
+          <div class="table-row" role="row" data-flat-monthly-price="225" data-included-forms="100">
             <div role="cell">SurveyCTO Basic</div>
             <div role="cell">$225/month annual subscription; 100 forms, unlimited users/devices, 5,000 monthly submissions</div>
             <div role="cell" data-cost>$2,700</div>
@@ -207,25 +207,19 @@
             <div role="cell" data-cost>$13,248</div>
             <div role="cell" data-difference>$13,008 more</div>
           </div>
-          <div class="table-row" role="row" data-flat-monthly-price="59">
+          <div class="table-row" role="row" data-flat-monthly-price="59" data-included-users="3">
             <div role="cell">Typeform Plus</div>
             <div role="cell">$59/month, 3 users, 1,000 responses/month included</div>
-            <div role="cell" data-cost>$708</div>
-            <div role="cell" data-difference>$468 more</div>
+            <div role="cell" data-cost>$2,832</div>
+            <div role="cell" data-difference>$2,592 more</div>
           </div>
-          <div class="table-row" role="row" data-flat-monthly-price="39">
+          <div class="table-row" role="row" data-flat-monthly-price="39" data-included-users="1" data-included-forms="50">
             <div role="cell">Jotform Silver</div>
             <div role="cell">$39/month billed annually, 1 user, 50 forms, 2,500 submissions/month</div>
-            <div role="cell" data-cost>$468</div>
-            <div role="cell" data-difference>$228 more</div>
+            <div role="cell" data-cost>$5,616</div>
+            <div role="cell" data-difference>$5,376 more</div>
           </div>
         </div>
-
-        <p class="comparison-context">
-          SurveyCTO is the closest field-data platform comparison here: its Basic plan includes offline case management,
-          unlimited users/devices, 100 forms, and 5,000 monthly submissions. FastaForm is narrower by design: it fits
-          teams that want local Android collection and scoped credentials without paying for a hosted survey server.
-        </p>
 
         <p class="source-note">
           Pricing examples were checked against public pricing pages on May 31, 2026:
@@ -252,6 +246,6 @@
       <a href="https://play.google.com/store/apps/details?id=org.fastaform.app">Google Play</a>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
