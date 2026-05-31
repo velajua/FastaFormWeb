@@ -29,6 +29,11 @@ test("landing page is a GitHub Pages-ready FastaForm marketing page", async () =
   assert.match(html, /privacy\//);
   assert.doesNotMatch(html, /href="\/(?!\/)/, "internal links must be relative for /FastaFormWeb/");
   assert.doesNotMatch(html, /src="\/(?!\/)/, "asset links must be relative for /FastaFormWeb/");
+
+  const script = await readSiteFile("script.js");
+  assert.match(script, /formsInput/);
+  assert.match(script, /"input"/);
+  assert.match(script, /"change"/);
 });
 
 test("privacy page preserves the current FastaForm policy content", async () => {
@@ -73,6 +78,10 @@ test("calculator estimates costs from users and form counts", async () => {
   assert.equal(
     estimateSubscriptionCost({ users: 4, forms: 1, months: 12, flatMonthlyPrice: 59, includedUsers: 3 }),
     1416
+  );
+  assert.equal(
+    estimateSubscriptionCost({ users: 12, forms: 3, months: 12, flatMonthlyPrice: 225, includedForms: 100 }),
+    2700
   );
   assert.equal(
     estimateSubscriptionCost({ users: 12, forms: 1, months: 12, flatMonthlyPrice: 39, includedUsers: 1 }),

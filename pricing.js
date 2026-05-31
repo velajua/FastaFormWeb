@@ -28,18 +28,19 @@ export function estimateSubscriptionCost({
   monthlyUserPrice = 0,
   flatMonthlyPrice = 0,
   minUsers = 1,
-  includedUsers = 1,
+  includedUsers = 0,
   includedForms = 0
 }) {
   const safeUsers = Math.max(positiveInteger(users), positiveInteger(minUsers));
   const safeMonths = positiveInteger(months, 12);
   const perUserPrice = positiveNumber(monthlyUserPrice);
   const flatPrice = positiveNumber(flatMonthlyPrice);
+  const userBlocks = includedUsers ? blockCount(safeUsers, includedUsers) : 1;
   const formBlocks = includedForms ? blockCount(forms, includedForms) : 1;
 
   if (perUserPrice) {
     return safeUsers * perUserPrice * safeMonths * formBlocks;
   }
 
-  return blockCount(safeUsers, includedUsers) * flatPrice * safeMonths * formBlocks;
+  return userBlocks * flatPrice * safeMonths * formBlocks;
 }
