@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FastaForm | Offline mobile forms for field teams</title>
+    <meta
+      name="description"
+      content="FastaForm is an offline Android form-entry app for importing, filling, exporting, and managing scoped field data."
+    >
+    <link rel="icon" href="assets/icon.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="FastaForm home">
+        <img src="assets/icon.png" alt="" width="40" height="40">
+        <span>FastaForm</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#workflow">Workflow</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#comparison">Savings</a>
+        <a href="privacy/">Privacy</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Offline Android data collection</p>
+          <h1>Field forms that keep working when the network does not.</h1>
+          <p class="lede">
+            FastaForm imports <code>.fstfrm</code> definitions, lets teams fill and manage records on device,
+            and exports structured data for review or reporting.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://play.google.com/store/apps/details?id=org.fastaform.app">
+              Get it on Google Play
+            </a>
+            <a class="button secondary" href="#workflow">See how it works</a>
+          </div>
+          <dl class="hero-facts">
+            <div>
+              <dt>Price</dt>
+              <dd>20 USD per credential generation</dd>
+            </div>
+            <div>
+              <dt>Access</dt>
+              <dd>Each credential can unlock up to 3 forms</dd>
+            </div>
+            <div>
+              <dt>Storage</dt>
+              <dd>App records stay local unless exported</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="phone-strip" aria-label="FastaForm screenshots">
+          <img src="screenshots/1.jpeg" alt="FastaForm login and credential generation screen">
+          <img src="screenshots/3.jpeg" alt="FastaForm forms import screen">
+          <img src="screenshots/6.jpeg" alt="FastaForm fill form screen">
+        </div>
+      </section>
+
+      <section class="feature-graphic" aria-label="FastaForm overview graphic">
+        <img src="assets/play-feature-graphic.png" alt="FastaForm Google Play feature graphic">
+      </section>
+
+      <section id="workflow" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">How it works</p>
+          <h2>Controlled form entry without a live backend.</h2>
+          <p>
+            FastaForm is built for field operations, inspections, intake workflows, inventory checks,
+            surveys, and other mobile data collection tasks.
+          </p>
+        </div>
+        <div class="steps">
+          <article>
+            <span>1</span>
+            <h3>Import form definitions</h3>
+            <p>Load validated <code>.fstfrm</code> files onto Android devices before the team goes into the field.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Generate scoped credentials</h3>
+            <p>Issue credentials tied to form IDs so access can be limited to the forms each team needs.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Fill offline records</h3>
+            <p>Save drafts, submit completed records, and amend submissions when follow-up is needed.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Preview and export</h3>
+            <p>Review collected records on device, then export data for reporting or external workflows.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="screens section" aria-label="App screens">
+        <div class="section-heading compact">
+          <p class="eyebrow">Inside the app</p>
+          <h2>Built around the real field workflow.</h2>
+        </div>
+        <div class="screen-grid">
+          <figure>
+            <img src="screenshots/2.jpeg" alt="Manual screen with table of contents">
+            <figcaption>Manual and form-building guidance</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/5.jpeg" alt="Form builder screen">
+            <figcaption>Form builder and validation</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/7.jpeg" alt="Amend submitted records screen">
+            <figcaption>Amend submitted records</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/9.jpeg" alt="Explore analytics screen">
+            <figcaption>Explore summaries and exports</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="pricing" class="pricing section">
+        <div class="section-heading">
+          <p class="eyebrow">Pricing</p>
+          <h2>Simple project-scoped access.</h2>
+          <p>
+            FastaForm charges 20 USD per credential generation. A generated credential can unlock up to 3 forms,
+            which keeps small deployments and temporary field projects from turning into recurring per-seat bills.
+          </p>
+        </div>
+        <div class="pricing-panel">
+          <div>
+            <p class="price">$20</p>
+            <p class="price-label">USD per credential generation</p>
+          </div>
+          <ul>
+            <li>Up to 3 form IDs per credential</li>
+            <li>Offline Android form filling</li>
+            <li>Local drafts, submitted records, amendments, previews, and exports</li>
+            <li>No developer-hosted backend required for collected form records</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="comparison" class="comparison section">
+        <div class="section-heading">
+          <p class="eyebrow">Enterprise savings model</p>
+          <h2>Use a credential cost when a subscription seat is overkill.</h2>
+          <p>
+            Subscription survey tools are powerful, but many teams only need controlled offline collection for
+            a small set of forms. This calculator compares published subscription examples against FastaForm
+            credential generation.
+          </p>
+        </div>
+
+        <div class="calculator" aria-label="Savings calculator">
+          <label>
+            Field users
+            <input id="users" type="number" min="1" max="500" value="12">
+          </label>
+          <label>
+            Credential generations
+            <input id="credentials" type="number" min="1" max="500" value="12">
+          </label>
+          <label>
+            Months to compare
+            <input id="months" type="number" min="1" max="36" value="12">
+          </label>
+          <div class="calculator-result">
+            <span>Estimated FastaForm cost</span>
+            <strong id="fastaformCost">$240</strong>
+          </div>
+        </div>
+
+        <div class="comparison-table" role="table" aria-label="Survey tool pricing comparison">
+          <div class="table-row table-head" role="row">
+            <div role="columnheader">Model</div>
+            <div role="columnheader">Published example</div>
+            <div role="columnheader">Estimated cost</div>
+            <div role="columnheader">Difference vs FastaForm</div>
+          </div>
+          <div class="table-row" role="row" data-monthly-user-price="30" data-min-users="3">
+            <div role="cell">SurveyMonkey Team Advantage</div>
+            <div role="cell">$30/user/month, starting at 3 users, billed annually</div>
+            <div role="cell" data-cost>$4,320</div>
+            <div role="cell" data-difference>$4,080 more</div>
+          </div>
+          <div class="table-row" role="row" data-monthly-user-price="92" data-min-users="3">
+            <div role="cell">SurveyMonkey Team Premier</div>
+            <div role="cell">$92/user/month, starting at 3 users, billed annually</div>
+            <div role="cell" data-cost>$13,248</div>
+            <div role="cell" data-difference>$13,008 more</div>
+          </div>
+          <div class="table-row" role="row" data-flat-monthly-price="59">
+            <div role="cell">Typeform Plus</div>
+            <div role="cell">$59/month, 3 users, 1,000 responses/month included</div>
+            <div role="cell" data-cost>$708</div>
+            <div role="cell" data-difference>$468 more</div>
+          </div>
+          <div class="table-row" role="row" data-flat-monthly-price="39">
+            <div role="cell">Jotform Silver</div>
+            <div role="cell">$39/month billed annually, 1 user, 50 forms, 2,500 submissions/month</div>
+            <div role="cell" data-cost>$468</div>
+            <div role="cell" data-difference>$228 more</div>
+          </div>
+        </div>
+
+        <p class="source-note">
+          Pricing examples were checked against public pricing pages on May 31, 2026:
+          <a href="https://www.surveymonkey.com/pricing/details/">SurveyMonkey</a>,
+          <a href="https://www.typeform.com/pricing/">Typeform</a>,
+          <a href="https://www.jotform.com/pricing/">Jotform</a>, and
+          <a href="https://workspace.google.com/pricing">Google Workspace</a>.
+          Current vendor pricing may change.
+        </p>
+      </section>
+
+      <section class="cta">
+        <h2>Deploy offline forms without standing up a survey platform.</h2>
+        <a class="button primary" href="https://play.google.com/store/apps/details?id=org.fastaform.app">
+          Open FastaForm on Google Play
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>FastaForm</span>
+      <a href="privacy/">Privacy Policy</a>
+      <a href="https://play.google.com/store/apps/details?id=org.fastaform.app">Google Play</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
