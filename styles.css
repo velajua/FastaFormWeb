@@ -527,6 +527,13 @@ figcaption {
     border-top: 1px solid var(--line);
   }
 
+  .table-row:not(.table-head) > div:first-child {
+    background: var(--panel-strong);
+    border-left: 4px solid var(--brand);
+    color: var(--brand-dark);
+    font-weight: 700;
+  }
+
   .cta {
     align-items: flex-start;
     flex-direction: column;
