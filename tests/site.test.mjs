@@ -19,7 +19,12 @@ test("landing page is a GitHub Pages-ready FastaForm marketing page", async () =
   assert.match(html, /20 USD/);
   assert.match(html, /up to 3 forms/i);
   assert.match(html, /Offline mobile forms/i);
+  assert.match(html, /SurveyCTO Basic/);
+  assert.match(html, /225\/month/);
+  assert.match(html, /5,000 monthly submissions/i);
   assert.match(html, /screenshots\/1\.jpeg/);
+  assert.match(html, /assets\/web-overview-card\.png/);
+  assert.doesNotMatch(html, /assets\/play-feature-graphic\.png/);
   assert.match(html, /privacy\//);
   assert.doesNotMatch(html, /href="\/(?!\/)/, "internal links must be relative for /FastaFormWeb/");
   assert.doesNotMatch(html, /src="\/(?!\/)/, "asset links must be relative for /FastaFormWeb/");
@@ -38,11 +43,22 @@ test("privacy page preserves the current FastaForm policy content", async () => 
 test("required static assets are present", () => {
   for (const path of [
     "assets/icon.png",
-    "assets/play-feature-graphic.png",
+    "assets/web-overview-card.png",
     "screenshots/1.jpeg",
     "screenshots/5.jpeg",
     "screenshots/10.jpeg"
   ]) {
     assert.ok(existsSync(join(root, path)), `${path} should exist`);
   }
+});
+
+test("web overview card is desktop-resolution", async () => {
+  const bytes = await readFile(join(root, "assets/web-overview-card.png"));
+  const signature = bytes.subarray(0, 8).toString("hex");
+  assert.equal(signature, "89504e470d0a1a0a", "overview card should be a PNG");
+
+  const width = bytes.readUInt32BE(16);
+  const height = bytes.readUInt32BE(20);
+  assert.ok(width >= 1600, `expected width >= 1600, got ${width}`);
+  assert.ok(height >= 900, `expected height >= 900, got ${height}`);
 });
