@@ -65,15 +65,16 @@ test("web overview card is desktop-resolution", async () => {
 
   const width = bytes.readUInt32BE(16);
   const height = bytes.readUInt32BE(20);
-  assert.ok(width >= 1600, `expected width >= 1600, got ${width}`);
-  assert.ok(height >= 900, `expected height >= 900, got ${height}`);
+  assert.equal(width, 1920);
+  assert.equal(height, 900);
 });
 
 test("calculator estimates costs from users and form counts", async () => {
   const { estimateFastaFormCost, estimateSubscriptionCost } = await import("../pricing.js");
 
-  assert.equal(estimateFastaFormCost({ users: 12, forms: 4 }), 480);
-  assert.equal(estimateFastaFormCost({ users: 2, forms: 7 }), 120);
+  assert.equal(estimateFastaFormCost({ users: 12, forms: 3 }), 20);
+  assert.equal(estimateFastaFormCost({ users: 12, forms: 4 }), 40);
+  assert.equal(estimateFastaFormCost({ users: 2, forms: 7 }), 60);
 
   assert.equal(
     estimateSubscriptionCost({ users: 4, forms: 1, months: 12, flatMonthlyPrice: 59, includedUsers: 3 }),

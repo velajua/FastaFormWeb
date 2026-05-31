@@ -17,8 +17,8 @@ function blockCount(value, included) {
   return Math.ceil(safeValue / safeIncluded);
 }
 
-export function estimateFastaFormCost({ users, forms }) {
-  return positiveInteger(users) * blockCount(forms, FASTAFORM_FORMS_PER_CREDENTIAL) * FASTAFORM_CREDENTIAL_PRICE;
+export function estimateFastaFormCost({ forms }) {
+  return blockCount(forms, FASTAFORM_FORMS_PER_CREDENTIAL) * FASTAFORM_CREDENTIAL_PRICE;
 }
 
 export function estimateSubscriptionCost({
