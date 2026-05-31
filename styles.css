@@ -246,6 +246,7 @@ dd {
 
 .feature-graphic img {
   border-radius: 8px;
+  height: auto;
   box-shadow: var(--shadow);
   margin: 0 auto;
   max-width: 1180px;

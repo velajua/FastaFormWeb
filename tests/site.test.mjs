@@ -34,6 +34,13 @@ test("landing page is a GitHub Pages-ready FastaForm marketing page", async () =
   assert.match(script, /formsInput/);
   assert.match(script, /"input"/);
   assert.match(script, /"change"/);
+
+  const css = await readSiteFile("styles.css");
+  assert.match(
+    css,
+    /\.feature-graphic img\s*\{[\s\S]*height:\s*auto;/,
+    "overview graphic must keep its image aspect ratio when scaled"
+  );
 });
 
 test("privacy page preserves the current FastaForm policy content", async () => {
