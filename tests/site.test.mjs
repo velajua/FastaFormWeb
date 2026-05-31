@@ -27,6 +27,7 @@ test("landing page is a GitHub Pages-ready FastaForm marketing page", async () =
   assert.match(html, /assets\/web-overview-card\.png/);
   assert.doesNotMatch(html, /assets\/play-feature-graphic\.png/);
   assert.match(html, /privacy\//);
+  assert.match(html, /terms\//);
   assert.doesNotMatch(html, /href="\/(?!\/)/, "internal links must be relative for /FastaFormWeb/");
   assert.doesNotMatch(html, /src="\/(?!\/)/, "asset links must be relative for /FastaFormWeb/");
 
@@ -50,6 +51,19 @@ test("privacy page preserves the current FastaForm policy content", async () => 
   assert.match(html, /Effective date: May 30, 2026/);
   assert.match(html, /offline mobile form-entry application/);
   assert.match(html, /Google Play Billing/);
+  assert.match(html, /\.\.\/index\.html/);
+});
+
+test("terms page defines use terms and client reference permission", async () => {
+  const html = await readSiteFile("terms/index.html");
+
+  assert.match(html, /FastaForm Terms and Conditions/);
+  assert.match(html, /Effective date: May 31, 2026/);
+  assert.match(html, /By using FastaForm/i);
+  assert.match(html, /responsible for lawful data collection/i);
+  assert.match(html, /client/i);
+  assert.match(html, /public client lists/i);
+  assert.match(html, /\.\.\/privacy\//);
   assert.match(html, /\.\.\/index\.html/);
 });
 
