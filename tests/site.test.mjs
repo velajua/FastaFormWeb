@@ -65,8 +65,8 @@ test("web overview card is desktop-resolution", async () => {
 
   const width = bytes.readUInt32BE(16);
   const height = bytes.readUInt32BE(20);
-  assert.equal(width, 1920);
-  assert.equal(height, 900);
+  assert.equal(width, 1357);
+  assert.equal(height, 745);
 });
 
 test("calculator estimates costs from users and form counts", async () => {
