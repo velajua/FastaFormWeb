@@ -82,7 +82,8 @@ nav {
 }
 
 nav a,
-.site-footer a {
+.site-footer a,
+.language-switcher {
   color: var(--muted);
   font-size: 0.95rem;
   text-decoration: none;
@@ -91,6 +92,35 @@ nav a,
 nav a:hover,
 .site-footer a:hover {
   color: var(--brand-dark);
+}
+
+.language-switcher {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+}
+
+.language-switcher span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.language-switcher button {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  min-height: 34px;
+  padding: 0 10px;
+}
+
+.language-switcher button.is-active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--white);
 }
 
 .hero {
@@ -473,7 +503,11 @@ figcaption {
 .site-footer span {
   color: var(--ink);
   font-weight: 700;
-  margin-right: auto;
+}
+
+.site-footer p {
+  color: var(--muted);
+  margin: 0 auto 0 0;
 }
 
 .policy {
@@ -549,6 +583,10 @@ figcaption {
 
   nav {
     gap: 12px;
+  }
+
+  .language-switcher {
+    flex-wrap: wrap;
   }
 
   h1 {
