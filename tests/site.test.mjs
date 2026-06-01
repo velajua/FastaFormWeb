@@ -28,6 +28,12 @@ test("landing page is a GitHub Pages-ready FastaForm marketing page", async () =
   assert.doesNotMatch(html, /assets\/play-feature-graphic\.png/);
   assert.match(html, /privacy\//);
   assert.match(html, /terms\//);
+  assert.match(html, /data-page="home"/);
+  assert.match(html, /data-language-option="en"/);
+  assert.match(html, /data-language-option="es"/);
+  assert.match(html, /Offline Android forms for field teams/);
+  assert.match(html, /Launch field data collection with one offline Android app/);
+  assert.doesNotMatch(html, /Deploy offline forms without standing up a survey platform/i);
   assert.doesNotMatch(html, /href="\/(?!\/)/, "internal links must be relative for /FastaFormWeb/");
   assert.doesNotMatch(html, /src="\/(?!\/)/, "asset links must be relative for /FastaFormWeb/");
 
@@ -35,8 +41,13 @@ test("landing page is a GitHub Pages-ready FastaForm marketing page", async () =
   assert.match(script, /formsInput/);
   assert.match(script, /"input"/);
   assert.match(script, /"change"/);
+  assert.match(script, /localStorage\.getItem\("fastaform-language"\)/);
+  assert.match(script, /Formularios de campo que siguen funcionando sin internet/);
+  assert.match(script, /Política de privacidad de FastaForm/);
+  assert.match(script, /Términos y condiciones de FastaForm/);
 
   const css = await readSiteFile("styles.css");
+  assert.match(css, /\.language-switcher/);
   assert.match(
     css,
     /\.feature-graphic img\s*\{[\s\S]*height:\s*auto;/,
@@ -52,6 +63,9 @@ test("privacy page preserves the current FastaForm policy content", async () => 
   assert.match(html, /offline mobile form-entry application/);
   assert.match(html, /Google Play Billing/);
   assert.match(html, /\.\.\/index\.html/);
+  assert.match(html, /data-page="privacy"/);
+  assert.match(html, /data-i18n="privacy.title"/);
+  assert.match(html, /src="\.\.\/script\.js"/);
 });
 
 test("terms page defines use terms and client reference permission", async () => {
@@ -65,6 +79,9 @@ test("terms page defines use terms and client reference permission", async () =>
   assert.match(html, /public client lists/i);
   assert.match(html, /\.\.\/privacy\//);
   assert.match(html, /\.\.\/index\.html/);
+  assert.match(html, /data-page="terms"/);
+  assert.match(html, /data-i18n="terms.title"/);
+  assert.match(html, /src="\.\.\/script\.js"/);
 });
 
 test("required static assets are present", () => {
